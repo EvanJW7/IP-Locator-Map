@@ -3,22 +3,23 @@ import subprocess
 import re
 import folium
 
-website = 'psg.fr'
+website = 'binance.com'
 print(f"Destination: {website}\n")
-print("tracing path to desired destination...\n")
+print("Tracing route to desired destination...")
+print("This may take a few minutes")
 
 
 def run_tracepath(website):
     try:
-        tracepath_output = subprocess.check_output(["tracepath", website], universal_newlines=True)
-        print("Trace path data:")
-        print(tracepath_output)
+        tracepath_output = subprocess.check_output(["traceroute", website], universal_newlines=True)
         return tracepath_output
     except subprocess.CalledProcessError as e:
         print("Error running tracepath:", e)
         return None
 
+
 raw_data = run_tracepath(website)
+
 
 def extract_ip_addresses(tracepath_output):
     ip_addresses = []
@@ -30,8 +31,9 @@ def extract_ip_addresses(tracepath_output):
                 ip_addresses.append(match.group())
     return ip_addresses
 
-ip_addresses = extract_ip_addresses(raw_data)
 
+ip_addresses = extract_ip_addresses(raw_data)
+ip_addresses.append(ip_addresses.pop(0))
 latitudes = []
 longitudes = []
 
@@ -45,9 +47,9 @@ for ip in ip_addresses:
         latitudes.append(data['lat'])
         longitudes.append(data['lon'])
     except:
-        print(f"{ip:>25}     unable to locate")
+        print(f"{ip:>25}     Private IP, unable to locate")
 
-m = folium.Map(location=[latitudes[0], longitudes[0]], zoom_start=5)
+m = folium.Map(location=[latitudes[0], longitudes[0]], zoom_start=2)
 
 # Add markers for each set of coordinates
 for lat, lon in zip(latitudes, longitudes):
@@ -62,3 +64,4 @@ lines = folium.PolyLine(
 
 # Save the map to an HTML file
 m.save('coordinates_map.html')
+
