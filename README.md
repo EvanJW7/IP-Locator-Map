@@ -1,4 +1,4 @@
-This program takes in a desired website and tracks which routers/locations throughtout the globe your connection had to pass through to get to the desired destination.
+This program takes in a desired website and maps which routers throughout the globe your connection had to pass through to get to the desired destination.
 
 Below you can see my internet path to connect to psg.fr, the website of the Paris Saint Germain Football Club. I am located in Chicago. 
 <img width="809" alt="Screen Shot 2023-08-17 at 11 46 44 PM" src="https://github.com/EvanJW7/IP-Locator/assets/84414002/7bab19d0-f2ca-4721-833c-26247ba4715f">
