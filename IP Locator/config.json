@@ -1,0 +1,12 @@
+{
+  "default_target": "github.com",
+  "timeout": 30,
+  "output_file": "coordinates_map.html",
+  "rate_limit_delay": 0.1,
+  "max_workers": 5,
+  "api_endpoint": "http://ip-api.com/json/",
+  "map_settings": {
+    "zoom_start": 2,
+    "tile_layer": "OpenStreetMap"
+  }
+}
