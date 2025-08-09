@@ -68,7 +68,7 @@ python3 geo.py --output my_route_map.html
 
 ### Command Line Options
 ```
---target, -t          Target website to trace (default: google.com)
+--target, -t          Target website to trace (default: github.com)
 --timeout             Timeout in seconds for traceroute (default: 30)
 --output, -o          Output HTML file (default: coordinates_map.html)
 --config, -c          Configuration file path
@@ -76,6 +76,73 @@ python3 geo.py --output my_route_map.html
 --verbose, -v         Enable verbose logging
 --parallel, -p        Use parallel processing for IP lookups
 ```
+
+## 📊 Sample Output
+
+### Console Output
+When you run the script, you'll see detailed progress information and results:
+
+```bash
+$ python3 geo.py --target github.com --timeout 10
+
+2025-08-09 01:01:45,230 - INFO - Starting network trace to github.com
+
+🎯 Destination: github.com
+🔄 Tracing route to destination...
+⏱️  This may take a few minutes
+
+2025-08-09 01:01:45,231 - INFO - Starting traceroute to github.com
+2025-08-09 01:01:50,457 - INFO - Traceroute completed (may be partial)
+2025-08-09 01:01:50,457 - INFO - Extracted 10 unique IP addresses
+2025-08-09 01:01:50,458 - INFO - Getting current location...
+2025-08-09 01:01:50,588 - INFO - Location from ipinfo.io: [41.85, -87.65]
+🌍 Getting location data for IP addresses...
+
+📍 Location data:
+              192.168.0.1     Home router (private)
+             96.120.27.17     Boston, Massachusetts, United States
+           96.110.166.109     Homewood, Illinois, United States
+           96.216.210.197     Homewood, Illinois, United States
+            96.108.34.137     North Chicago, Illinois, United States
+             96.110.40.53     Marietta, Georgia, United States
+             96.110.32.86     Ashburn, Virginia, United States
+           63.141.223.245     Tysons Corner, Virginia, United States
+           213.200.120.54     London, England, United Kingdom
+             69.174.5.178     Washington, District of Columbia, United States
+
+🎉 Congrats! Your internet connection made it all the way to Washington
+📊 Total IPs visited: 10
+🌍 Total cities visited: 9
+
+🗺️  Creating interactive map...
+✅ Map saved to: coordinates_map.html
+
+🚀 Analysis complete! Open coordinates_map.html in your browser to view the map.
+```
+
+### Interactive Map Features
+The generated HTML map includes:
+
+- **🗺️ Interactive Map**: Zoom, pan, and explore the route
+- **🎯 Color-coded Markers**: 
+  - 🔴 Red: Start point (your location)
+  - 🔵 Blue: Intermediate network hops
+  - 🟢 Green: Destination (target website)
+- **📋 Detailed Popups**: Click markers for hop information, IP addresses, and coordinates
+- **🔄 Route Visualization**: Blue dashed line showing the approximate network path
+- **📊 Legend**: Clear explanation of map elements
+
+### Map Screenshot Example
+```
+🗺️ Network Route Legend
+🔴 Start Point (Your Location)
+🔵 Intermediate Network Hops  
+🟢 Destination (Target Website)
+
+💡 Click markers for details • Blue dashed line shows approximate route
+```
+
+**The interactive map opens in your default browser and shows the complete network route with detailed information for each hop!**
 
 ## 🎯 Supported Targets
 
