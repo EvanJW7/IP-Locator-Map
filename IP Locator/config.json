@@ -7,6 +7,6 @@
   "api_endpoint": "http://ip-api.com/json/",
   "map_settings": {
     "zoom_start": 2,
-    "tile_layer": "OpenStreetMap"
+    "tile_layer": "Esri.WorldStreetMap"
   }
 }

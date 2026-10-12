@@ -206,8 +206,12 @@ def create_enhanced_map(latitudes: List[float], longitudes: List[float],
         logger.error("No coordinates available for map creation")
         return None
     
-    # Create map centered on first location
-    m = folium.Map(location=[latitudes[0], longitudes[0]], zoom_start=2)
+    # Esri serves these tiles. OpenStreetMap's own servers block a local map file.
+    m = folium.Map(
+        location=[latitudes[0], longitudes[0]],
+        zoom_start=2,
+        tiles="Esri.WorldStreetMap",
+    )
     
     # Add markers with popups
     for i, (lat, lon, city, ip) in enumerate(zip(latitudes, longitudes, cities, ip_addresses)):
